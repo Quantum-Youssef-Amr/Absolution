@@ -1,0 +1,44 @@
+movement vector:{
+    x: 1 -- distance between 2 tiles in x axis -- / 2 --> 0.5 units,
+    y: 0.5 -- distance between 2 tiles in y axis -- / 2 --> 0.25 units
+}
+
+
+directions Enum{
+    up;     ( 0.5,  0.25),
+    down:   (-0.5, -0.25),
+    left:   (-0.5,  0.25),
+    right:  ( 0.5, -0.25)
+}
+
+
+characters movement pipeline:
+
+
+Enemies:
+location to go to (done)-> solver to get the path (output a directions array) (done)-> input handler -> mover to move the current characters
+
+
+Player: if player can control characters and walk
+input handler -> mover
+
+
+Input handler structure:
+_IinputHander_ have 2 types     no need for extending the input for enemy   implemented the list converting in main class
+    {
+        Enemy one to iterate over the movement array,
+        player to handle the keyboard inputs
+    }
+
+    _IinputHander_ have 1 main function
+{
+    Handle input {
+        input<[Enum]>: direction array
+        returns<vector2>: direction vector
+    }
+    iterate over array if there is an event
+    (player or enemy)
+}
+
+
+extend tiles to connect
