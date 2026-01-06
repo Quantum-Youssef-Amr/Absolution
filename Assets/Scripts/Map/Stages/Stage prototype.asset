@@ -16,7 +16,39 @@ MonoBehaviour:
   StageName: Prototype
   MapSize: {x: 18, y: 18}
   MapStepSize: {x: 0.5, y: 0.25}
+  MapSizeMax: {x: 8, y: 8}
+  MapSizeMin: {x: -9, y: -9}
   DiffRectCenter: {x: 0, y: 0}
-  DiffRectSize: {x: 4, y: 6}
+  DiffRectSize: {x: 6, y: 4}
   DiffRectMax: {x: 3, y: 2}
   DiffRectMin: {x: -3, y: -2}
+  MaxStageWave: 10
+  OpenNewEnemyEvery: 2
+  SpawnRate: 2
+  StageProgression:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 2
+      inSlope: 0.8888889
+      outSlope: 0.8888889
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 10
+      value: 10
+      inSlope: 0.8888889
+      outSlope: 0.8888889
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  HardnessFactor: 0.9
+  StageEnemies:
+  - {fileID: 3405670419794477605, guid: 64aa59d8c680ca180886974345bbfb2a, type: 3}

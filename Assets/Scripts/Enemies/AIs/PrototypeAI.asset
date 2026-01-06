@@ -15,4 +15,4 @@ MonoBehaviour:
   StepParSec: 2
   DamageParSec: 0
   MaxHealth: 0
-  spriteOffset: 0.25
+  spriteOffset: {x: 0, y: 0.25}

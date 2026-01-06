@@ -11,7 +11,7 @@ public class Base_AI : MonoBehaviour
     private Coroutine _walking;
     private StageData _SD;
 
-    void Start()
+    private void StartSetUp()
     {
         _transform = transform;
         _SD = StageManager.Instance.getStageData();
@@ -19,6 +19,7 @@ public class Base_AI : MonoBehaviour
 
     public virtual void GetToTile(Vector2 target)
     {
+        StartSetUp();
         if (_walking != null)
         {
             StopCoroutine(_walking);
@@ -58,7 +59,7 @@ public class Base_AI : MonoBehaviour
             Dictionary<float, Vector2> m_valuesDict = new()
             {
                 {
-                    GameMath.IsInRange(m_posInGrid + Vector2.up, _SD.DiffRectMin, _SD.DiffRectMax)
+                    GameMath.IsInRange(m_posInGrid + Vector2.up, _SD.DiffRectMin, _SD.DiffRectMax + Vector2.one)
                     ||
                     m_visitedNodes.Contains(m_posInGrid + Vector2.up)
                     ?
@@ -67,7 +68,7 @@ public class Base_AI : MonoBehaviour
                     Vector2.up
                 },
                 {
-                    GameMath.IsInRange(m_posInGrid + Vector2.down, _SD.DiffRectMin, _SD.DiffRectMax)
+                    GameMath.IsInRange(m_posInGrid + Vector2.down, _SD.DiffRectMin, _SD.DiffRectMax + Vector2.one)
                     ||
                     m_visitedNodes.Contains(m_posInGrid + Vector2.down)
                     ?
@@ -76,7 +77,7 @@ public class Base_AI : MonoBehaviour
                     Vector2.down
                 },
                 {
-                    GameMath.IsInRange(m_posInGrid + Vector2.left, _SD.DiffRectMin, _SD.DiffRectMax)
+                    GameMath.IsInRange(m_posInGrid + Vector2.left, _SD.DiffRectMin, _SD.DiffRectMax + Vector2.one)
                     ||
                     m_visitedNodes.Contains(m_posInGrid + Vector2.left)
                     ?
@@ -85,7 +86,7 @@ public class Base_AI : MonoBehaviour
                     Vector2.left
                 },
                 {
-                    GameMath.IsInRange(m_posInGrid + Vector2.right, _SD.DiffRectMin, _SD.DiffRectMax)
+                    GameMath.IsInRange(m_posInGrid + Vector2.right, _SD.DiffRectMin, _SD.DiffRectMax + Vector2.one)
                     ||
                     m_visitedNodes.Contains(m_posInGrid + Vector2.right)
                     ?
@@ -142,8 +143,8 @@ public class Base_AI : MonoBehaviour
             for (int i = 0; i < _path.Length - 1; i++)
             {
                 if (i == 0)
-                    Gizmos.DrawLine(_PosWorldPos, _path[i]);
-                Gizmos.DrawLine(_path[i], _path[i + 1]);
+                    Gizmos.DrawLine(_PosWorldPos + (Vector2.down * 0.25f), _path[i] + (Vector2.down * 0.25f));
+                Gizmos.DrawLine(_path[i] + (Vector2.down * 0.25f), _path[i + 1] + (Vector2.down * 0.25f));
             }
         }
     }

@@ -21,9 +21,9 @@ public class StageManager : MonoBehaviour
     [ContextMenu("Recalculate MIN MAX")]
     private void CalculateStageMinMax()
     {
-        stageData.DiffRectMax = new(Mathf.RoundToInt(stageData.DiffRectCenter.x + (stageData.DiffRectSize.x - 1)), Mathf.RoundToInt(stageData.DiffRectCenter.y + ((stageData.DiffRectSize.y - 1) / 2)));
+        stageData.DiffRectMax = new(Mathf.RoundToInt(stageData.DiffRectCenter.x + (stageData.DiffRectSize.x / 2)), Mathf.RoundToInt(stageData.DiffRectCenter.y + (stageData.DiffRectSize.y / 2)));
 
-        stageData.DiffRectMin = new(Mathf.RoundToInt(stageData.DiffRectCenter.x - (stageData.DiffRectSize.x - 1)), Mathf.RoundToInt(stageData.DiffRectCenter.y - ((stageData.DiffRectSize.y - 1) / 2)));
+        stageData.DiffRectMin = new(Mathf.RoundToInt(stageData.DiffRectCenter.x - (stageData.DiffRectSize.x / 2)), Mathf.RoundToInt(stageData.DiffRectCenter.y - (stageData.DiffRectSize.y / 2)));
 
         stageData.MapSizeMax = stageData.DiffRectCenter + ((stageData.MapSize / 2) - Vector2Int.one);
         stageData.MapSizeMin = stageData.DiffRectCenter - stageData.MapSize / 2;

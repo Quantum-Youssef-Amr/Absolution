@@ -20,5 +20,13 @@ public class StageData : ScriptableObject
     public Vector2Int DiffRectMax;
     public Vector2Int DiffRectMin;
 
+    [Space(16), Header("Spawner Setting")]
+    public int MaxStageWave;
+    public int OpenNewEnemyEvery;
+    public int SpawnRate;
 
+    public AnimationCurve StageProgression;
+
+    [Range(0.2f, 1f)] public float HardnessFactor;
+    public GameObject[] StageEnemies;
 }
