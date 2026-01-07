@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIParams
   StepParSec: 2
   DamageParSec: 0
-  MaxHealth: 0
+  MaxHealth: 10
   spriteOffset: {x: 0, y: 0.25}

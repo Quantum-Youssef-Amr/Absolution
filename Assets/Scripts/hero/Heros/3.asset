@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9253116aab27fe377bda8c704fbb08ca, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: Assembly-CSharp::Hero
+  Rank: 3
+  name: large tower
+  description: 
+  BloodReturn: 10
+  sprite: {fileID: 1788658771563051143, guid: eb37c5a5c4cc260a880e3100366ce258, type: 3}
+  weapon: {fileID: 11400000, guid: 02346371c677071b6a725dca5d7083dc, type: 2}

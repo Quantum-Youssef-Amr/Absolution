@@ -25,6 +25,7 @@ MonoBehaviour:
   MaxStageWave: 10
   OpenNewEnemyEvery: 2
   SpawnRate: 2
+  StageLoseEnemiesNum: 200
   StageProgression:
     serializedVersion: 2
     m_Curve:

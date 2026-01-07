@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Data.SqlTypes;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -65,6 +64,10 @@ public class Spawner : MonoBehaviour
             GameObject m_Enemy = _sd.StageEnemies[UnityEngine.Random.Range(0, Math.Clamp(_openEnemies, 0, _sd.StageEnemies.Length))];
             m_Enemy = Instantiate(m_Enemy, m_SpawnLocation, Quaternion.identity, _t);
             m_Enemy.GetComponent<Base_AI>().GetToTile(m_HeadingLocation);
+
+
+            if (_t.childCount >= _sd.StageLoseEnemiesNum)
+                OnLose?.Invoke();
 
             yield return new WaitForSeconds(1f / _sd.SpawnRate * _waveNumber * _sd.HardnessFactor);
         }

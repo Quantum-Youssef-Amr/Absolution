@@ -24,6 +24,7 @@ public class StageData : ScriptableObject
     public int MaxStageWave;
     public int OpenNewEnemyEvery;
     public int SpawnRate;
+    public int StageLoseEnemiesNum;
 
     public AnimationCurve StageProgression;
 

@@ -69,9 +69,11 @@
   "dotnet.defaultSolution": "Absolution.sln",
   "cSpell.words": [
     "Iinput",
+    "interactable",
     "Mathf",
     "Scriptable",
     "Tilemap",
-    "Tilemaps"
+    "Tilemaps",
+    "UGUI"
   ]
 }
