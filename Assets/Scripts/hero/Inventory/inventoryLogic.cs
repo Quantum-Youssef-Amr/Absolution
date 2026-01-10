@@ -1,12 +1,13 @@
-using System.Linq;
 using UnityEngine;
+using System.Collections;
 
 public class InventoryLogic : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
 
-    void Awake()
+    void Start()
     {
+        StartCoroutine(UpdateInventory());
         GameEventBus.OnSelectingHero += HeroID =>
         {
             GameEventBus.OnIsHeroAvailable?.Invoke(IsHeroAvailable(HeroID), inventory.inventoryCells[HeroID].hero ?? null);
@@ -23,11 +24,6 @@ public class InventoryLogic : MonoBehaviour
             AddHeroToInventory(Hero);
             UpdateInventoryUI();
         };
-    }
-
-    void Start()
-    {
-        UpdateInventoryUI();
     }
 
     private void UpdateInventoryUI()
@@ -62,6 +58,12 @@ public class InventoryLogic : MonoBehaviour
                 break;
             }
         }
+    }
+
+    private IEnumerator UpdateInventory()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        UpdateInventoryUI();
     }
 
 }

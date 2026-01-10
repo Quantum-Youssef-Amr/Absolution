@@ -25,6 +25,7 @@ public class StageData : ScriptableObject
     public int OpenNewEnemyEvery;
     public int SpawnRate;
     public int StageLoseEnemiesNum;
+    [Range(0.5f, 1)] public float StageEnemiesWarning;
 
     public AnimationCurve StageProgression;
 

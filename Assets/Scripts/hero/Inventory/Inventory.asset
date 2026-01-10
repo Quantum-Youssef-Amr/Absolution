@@ -12,12 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f74a14f6ad5febb88a7f986e154b78b5, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
-  inventoryCells:
-  - hero: {fileID: 11400000, guid: c7e5b5e0ac9d44f0c8d26d29548be945, type: 2}
-    num: 10
-  - hero: {fileID: 11400000, guid: 54446571238ba1902be58b7ea134eecd, type: 2}
-    num: 10
-  - hero: {fileID: 11400000, guid: 060508beaaf7ee28db4b73a85482cacb, type: 2}
-    num: 1
-  - hero: {fileID: 11400000, guid: c7e5b5e0ac9d44f0c8d26d29548be945, type: 2}
-    num: 0
+  _initBlood: 999999
+  inventoryCells: []

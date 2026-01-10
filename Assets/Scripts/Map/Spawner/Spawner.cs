@@ -13,6 +13,7 @@ public class Spawner : MonoBehaviour
     private Coroutine _spawning;
 
     public Action OnLose;
+    public Action OnWarning;
     public Action OnStageStart;
 
     void Start()
@@ -26,10 +27,14 @@ public class Spawner : MonoBehaviour
             GameEventBus.OnGameLoss?.Invoke();
         };
 
+        OnWarning += () =>
+        {
+            GameEventBus.OnEnemiesNumberWarningOn?.Invoke(_t.childCount);
+        };
+
         OnStageStart += () => StartCoroutine(SpawnStage());
 
         OnStageStart?.Invoke();
-
     }
 
     private IEnumerator SpawnStage()
@@ -44,6 +49,8 @@ public class Spawner : MonoBehaviour
 
             _waveNumber++;
             _openEnemies += _waveNumber % _sd.OpenNewEnemyEvery == 0 ? 1 : 0;
+
+            GameEventBus.OnWaveNumberChange?.Invoke(_waveNumber);
 
             _spawning ??= StartCoroutine(SpawnWave());
 
@@ -68,6 +75,11 @@ public class Spawner : MonoBehaviour
 
             if (_t.childCount >= _sd.StageLoseEnemiesNum)
                 OnLose?.Invoke();
+
+            if (_t.childCount >= _sd.StageLoseEnemiesNum * _sd.StageEnemiesWarning)
+                OnWarning?.Invoke();
+            else
+                GameEventBus.OnEnemiesNumberWarningOff?.Invoke();
 
             yield return new WaitForSeconds(1f / _sd.SpawnRate * _waveNumber * _sd.HardnessFactor);
         }

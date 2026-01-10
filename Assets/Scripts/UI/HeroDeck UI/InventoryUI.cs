@@ -11,6 +11,10 @@ public class InventoryUI : MonoBehaviour
 
     void Awake()
     {
+    }
+
+    void Start()
+    {
         GameEventBus.OnUpdateInventoryIU += Inventory => UpdateUI(Inventory);
     }
 
@@ -38,7 +42,6 @@ public class InventoryUI : MonoBehaviour
             m_btn.onClick.AddListener(() =>
             {
                 GameEventBus.OnSelectingHero?.Invoke(i);
-
                 GameEventBus.OnIsHeroAvailable += (IsHeroAvailable, Hero) =>
                 {
                     if (IsHeroAvailable)
