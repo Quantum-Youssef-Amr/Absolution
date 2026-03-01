@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class InventoryLogic : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class InventoryLogic : MonoBehaviour
 
     private void UpdateInventoryUI()
     {
-        GameEventBus.OnUpdateInventoryIU?.Invoke(inventory.inventoryCells);
+        GameEventBus.OnUpdateInventoryIU?.Invoke(inventory.inventoryCells.ToArray());
     }
 
     private bool IsHeroAvailable(int SlotID)
@@ -38,11 +39,16 @@ public class InventoryLogic : MonoBehaviour
 
     private void AddHeroToInventory(Hero hero)
     {
-        for (int slotIndex = 0; slotIndex < inventory.inventoryCells.Length; slotIndex++)
+        if (inventory.inventoryCells.Where(cell => cell.hero == hero).ToArray().Length == 0)
         {
-            if (inventory.inventoryCells[slotIndex].hero.name == hero.name)
+            inventory.inventoryCells.Add(new(hero));
+        }
+
+        for (int slotIndex = 0; slotIndex < inventory.inventoryCells.Count; slotIndex++)
+        {
+            if (inventory.inventoryCells[slotIndex].hero == hero)
             {
-                inventory.inventoryCells[slotIndex].num++;
+                inventory.inventoryCells[slotIndex] = new(hero, inventory.inventoryCells[slotIndex].num + 1);
                 break;
             }
         }
@@ -50,11 +56,15 @@ public class InventoryLogic : MonoBehaviour
 
     private void RemoveHeroFromInventory(Hero hero)
     {
-        for (int slotIndex = 0; slotIndex < inventory.inventoryCells.Length; slotIndex++)
+        for (int slotIndex = 0; slotIndex < inventory.inventoryCells.Count; slotIndex++)
         {
             if (inventory.inventoryCells[slotIndex].hero.name == hero.name)
             {
-                inventory.inventoryCells[slotIndex].num--;
+                inventory.inventoryCells[slotIndex] = new(hero, inventory.inventoryCells[slotIndex].num - 1);
+                if (inventory.inventoryCells[slotIndex].num <= 0)
+                {
+                    inventory.inventoryCells.RemoveAt(slotIndex);
+                }
                 break;
             }
         }

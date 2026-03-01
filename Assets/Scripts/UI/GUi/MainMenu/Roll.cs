@@ -21,7 +21,7 @@ public class Roll : MonoBehaviour
 
     void OnEnable()
     {
-        GameEventBus.OnUpdateInventoryIU?.Invoke(inventory.inventoryCells);
+        GameEventBus.OnUpdateInventoryIU?.Invoke(inventory.inventoryCells.ToArray());
         inventory.Blood++;
     }
 

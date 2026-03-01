@@ -9,7 +9,7 @@ public class InventoryUpdater : MonoBehaviour
     [SerializeField] private GridLayoutGroup gridLayoutGroup;
     [SerializeField] private RectTransform RectTransform;
 
-    void Awake()
+    void Start()
     {
         GameEventBus.OnUpdateInventoryIU += inventorySlots => UpdateUI(inventorySlots);
     }
