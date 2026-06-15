@@ -71,9 +71,13 @@ Absolution is a Unity project implementing a hybrid of tower defense and gacha-c
 - Project maintained by the repository owner.
 - Built with Unity — see [Unity](https://unity.com) for engine docs and downloads.
 
-## License
-No License — All rights reserved.
+---
 
-This repository does not include a license file. That means:
-- All rights are reserved by the repository owner.
-- You do not have permission to reuse, modify, distribute, or copy the project's contents unless you obtain explicit permission from the owner.
+## ⚖️ License
+
+**No license – All rights reserved.**
+
+This project is shared for **viewing and portfolio purposes only**.  
+You may not copy, modify, distribute, or use any part of this game or its assets without explicit written permission from the author.
+
+> 👤 **Author:** Youssef Amr – *The Solo Dev*
